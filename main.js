@@ -57,4 +57,3 @@ function changeFrame() {
     frames[index].elt.style.display = 'block';
 }
 
-//addFrame();
