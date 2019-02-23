@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <title>LED Cube Editor</title>
+    <link rel="stylesheet" type="text/css" media="screen" href="main.css">
+    <script src="jscolor.js"></script>
+    
+</head>
+<body>
+    <div id='frame-tools'>
+        <span>Frame Select
+            <select id='frame-select' onchange='changeFrame()'>
+            <!-- options populated in main.js -->
+            </select>
+        </span>
+        <button name='add-frame' onclick='addFrame()'>Add Frame</button>
+        <span>Frame Duration (ms): <input type=number id='frame-duration'/></span>
+    </div>
+    <div id='frame-container'></div>
+    <script src="main.js"></script>
+</body>
+</html>
