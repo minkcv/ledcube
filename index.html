@@ -15,7 +15,7 @@
             </select>
         </span>
         <button onclick='addFrame()'>Add Frame</button>
-        <span>Frame Duration (ms): <input type=number id='frame-duration'/></span>
+        <span>Frame Duration (ms): <input type=number id='frame-duration' onkeydown='changeDuration()' onpaste='changeDuration()' oninput='changeDuration()'/></span>
     </div>
     <div id='frame-container'></div>
     <button onclick='convertToOutput()'>Export</button>

@@ -1,6 +1,6 @@
 var frameContainer = document.getElementById('frame-container');
 var frameSelectElt = document.getElementById('frame-select');
-var frameDurationElt = document.getElementById('frameDuration');
+var frameDurationElt = document.getElementById('frame-duration');
 var includeZeroesElt = document.getElementById('include-zeroes');
 var frames = [];
 
@@ -18,7 +18,7 @@ function addFrame() {
     frameContainer.appendChild(sliceContainerElt);
     var frame = {
         frameId: frames.length,
-        frameDuration: 100, // Milliseconds
+        duration: 100, // Milliseconds
         slices: [],
         elt: sliceContainerElt
     };
@@ -49,6 +49,7 @@ function addFrame() {
     frameSelectElt.appendChild(frameOption);
     frameSelectElt.value = frames.length;
     frames.push(frame);
+    frameDurationElt.value = 100;
     changeFrame(frames.length - 1);
 }
 
@@ -59,10 +60,19 @@ function changeFrame() {
         frames[i].elt.style.display = 'none';
     }
     frames[index].elt.style.display = 'block';
+    frameDurationElt.value = frames[frameSelectElt.value].duration;
 }
 
 function convertToOutput() {
     var output = '';
+    var line = 'const long intervals[' + frames.length + '] = {';
+    for (var f = 0; f < frames.length; f++) {
+        line += frames[f].duration;
+        if (f != frames.length - 1)
+            line += ', ';
+    }
+    line += '};';
+    output += line + '\n';
     for (var f = 0; f < frames.length; f++) {
         for (var s = 0; s < frames[f].slices.length; s++) {
             var slice = frames[f].slices[s];
@@ -84,4 +94,9 @@ function convertToOutput() {
     outputElt.value = output;
 }
 
+function changeDuration() {
+    frames[frameSelectElt.value].duration = frameDurationElt.value;
+}
+
 addFrame();
+
