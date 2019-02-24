@@ -68,9 +68,9 @@ function convertToOutput() {
             for (var x = 0; x < numRows; x++) { 
                 for (var y = 0; y < numCols; y++) {
                     var colorPickerElt = slice.colorPickers[y * numRows + x];
-                    var red = colorPickerElt.jscolor.rgb[0];
-                    var green = colorPickerElt.jscolor.rgb[1];
-                    var blue = colorPickerElt.jscolor.rgb[2];
+                    var red = Math.floor(colorPickerElt.jscolor.rgb[0]);
+                    var green = Math.floor(colorPickerElt.jscolor.rgb[1]);
+                    var blue = Math.floor(colorPickerElt.jscolor.rgb[2]);
                     if (red == 0 && green == 0 && blue == 0)
                         continue;
                     var line = 'writeLED(' + (y * numRows + x) + ', ' + red + ', ' + green + ', ' + blue + ');';
@@ -83,3 +83,4 @@ function convertToOutput() {
     outputElt.value = output;
 }
 
+addFrame();
