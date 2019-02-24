@@ -73,6 +73,7 @@ function convertToOutput() {
     }
     line += '};';
     output += line + '\n';
+    output += 'const int numIntervals = ' + frames.length + ';\n';
     output += 'switch(intervalIndex) {\n'
     for (var f = 0; f < frames.length; f++) {
         output += '  case ' + f + ':\n'
