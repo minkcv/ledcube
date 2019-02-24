@@ -1,6 +1,7 @@
 var frameContainer = document.getElementById('frame-container');
 var frameSelectElt = document.getElementById('frame-select');
 var frameDurationElt = document.getElementById('frameDuration');
+var includeZeroesElt = document.getElementById('include-zeroes');
 var frames = [];
 
 // Cube is like a sandwich.
@@ -65,13 +66,13 @@ function convertToOutput() {
     for (var f = 0; f < frames.length; f++) {
         for (var s = 0; s < frames[0].slices.length; s++) {
             var slice = frames[0].slices[s];
-            for (var x = 0; x < numRows; x++) { 
-                for (var y = 0; y < numCols; y++) {
+            for (var y = 0; y < numCols; y++) {
+                for (var x = 0; x < numRows; x++) { 
                     var colorPickerElt = slice.colorPickers[y * numRows + x];
                     var red = Math.floor(colorPickerElt.jscolor.rgb[0]);
                     var green = Math.floor(colorPickerElt.jscolor.rgb[1]);
                     var blue = Math.floor(colorPickerElt.jscolor.rgb[2]);
-                    if (red == 0 && green == 0 && blue == 0)
+                    if (!includeZeroesElt.checked && red == 0 && green == 0 && blue == 0)
                         continue;
                     var line = 'writeLED(' + (y * numRows + x) + ', ' + red + ', ' + green + ', ' + blue + ');';
                     output += line + '\n';
