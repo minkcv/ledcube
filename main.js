@@ -91,6 +91,7 @@ function convertToOutput() {
                 }
             }
         }
+        output += '    break;\n';
     }
     output += '}';
     var outputElt = document.getElementById('output');
