@@ -14,10 +14,12 @@
             <!-- options populated in main.js -->
             </select>
         </span>
-        <button name='add-frame' onclick='addFrame()'>Add Frame</button>
+        <button onclick='addFrame()'>Add Frame</button>
         <span>Frame Duration (ms): <input type=number id='frame-duration'/></span>
     </div>
     <div id='frame-container'></div>
+    <button onclick='convertToOutput()'>Export</button>
+    <textarea id='output' rows=20 cols=80></textarea>
     <script src="main.js"></script>
 </body>
 </html>
