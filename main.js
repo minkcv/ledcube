@@ -64,8 +64,8 @@ function changeFrame() {
 function convertToOutput() {
     var output = '';
     for (var f = 0; f < frames.length; f++) {
-        for (var s = 0; s < frames[0].slices.length; s++) {
-            var slice = frames[0].slices[s];
+        for (var s = 0; s < frames[f].slices.length; s++) {
+            var slice = frames[f].slices[s];
             for (var y = 0; y < numCols; y++) {
                 for (var x = 0; x < numRows; x++) { 
                     var colorPickerElt = slice.colorPickers[y * numRows + x];
