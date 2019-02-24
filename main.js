@@ -74,7 +74,7 @@ function convertToOutput() {
                     var blue = Math.floor(colorPickerElt.jscolor.rgb[2]);
                     if (!includeZeroesElt.checked && red == 0 && green == 0 && blue == 0)
                         continue;
-                    var line = 'writeLED(' + (y * numRows + x) + ', ' + red + ', ' + green + ', ' + blue + ');';
+                    var line = 'writeLED(' + (y * numRows + x + s * numRows * numCols) + ', ' + red + ', ' + green + ', ' + blue + ');';
                     output += line + '\n';
                 }
             }
