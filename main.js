@@ -73,7 +73,9 @@ function convertToOutput() {
     }
     line += '};';
     output += line + '\n';
+    output += 'switch(intervalIndex) {\n'
     for (var f = 0; f < frames.length; f++) {
+        output += '  case ' + f + ':\n'
         for (var s = 0; s < frames[f].slices.length; s++) {
             var slice = frames[f].slices[s];
             for (var y = 0; y < numCols; y++) {
@@ -84,12 +86,13 @@ function convertToOutput() {
                     var blue = Math.floor(colorPickerElt.jscolor.rgb[2]);
                     if (!includeZeroesElt.checked && red == 0 && green == 0 && blue == 0)
                         continue;
-                    var line = 'writeLED(' + (y * numRows + x + s * numRows * numCols) + ', ' + red + ', ' + green + ', ' + blue + ');';
+                    var line = '    writeLED(' + (y * numRows + x + s * numRows * numCols) + ', ' + red + ', ' + green + ', ' + blue + ');';
                     output += line + '\n';
                 }
             }
         }
     }
+    output += '}';
     var outputElt = document.getElementById('output');
     outputElt.value = output;
 }
