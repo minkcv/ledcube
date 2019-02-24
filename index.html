@@ -18,8 +18,10 @@
         <span>Frame Duration (ms): <input type=number id='frame-duration' onkeydown='changeDuration()' onpaste='changeDuration()' oninput='changeDuration()'/></span>
     </div>
     <div id='frame-container'></div>
-    <button onclick='convertToOutput()'>Export</button>
-    <span>Include zeroes:<input type='checkbox' id='include-zeroes'/></span>
+    <div>
+        <button onclick='convertToOutput()'>Export</button>
+        <span>Include zeroes:<input type='checkbox' id='include-zeroes'/></span>
+    </div>
     <textarea id='output' rows=20 cols=80></textarea>
     <script src="main.js"></script>
 </body>
