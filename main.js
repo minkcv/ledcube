@@ -65,7 +65,8 @@ function changeFrame() {
 
 function convertToOutput() {
     var output = '';
-    var line = 'const long intervals[' + frames.length + '] = {';
+    output += 'const int numIntervals = ' + frames.length + ';\n';
+    var line = 'const long intervals[numIntervals] = {';
     for (var f = 0; f < frames.length; f++) {
         line += frames[f].duration;
         if (f != frames.length - 1)
@@ -73,7 +74,6 @@ function convertToOutput() {
     }
     line += '};';
     output += line + '\n';
-    output += 'const int numIntervals = ' + frames.length + ';\n';
     output += 'switch(intervalIndex) {\n'
     for (var f = 0; f < frames.length; f++) {
         output += '  case ' + f + ':\n'
